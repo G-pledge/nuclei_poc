@@ -1,10 +1,14 @@
-# This currently does nothing. We have moved to GitHub action, but this is kept
-# until spf13 has disabled this project in AppVeyor.
-version: '{build}'
-clone_folder: C:\gopath\src\github.com\spf13\afero
+version: "{build}"
+platform: x64
+clone_folder: c:\gopath\src\github.com\sirupsen\logrus
 environment:
-  GOPATH: C:\gopath
+  GOPATH: c:\gopath
+branches:
+  only:
+    - master
+install:
+  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+  - go version
 build_script:
-- cmd: >-
-    go version
-
+  - go get -t
+  - go test
