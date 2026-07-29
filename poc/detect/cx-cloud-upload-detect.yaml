@@ -1,10 +1,12 @@
 id: cx-cloud-upload-detect
+
 info:
   name: CX Cloud Unauthenticated Upload Detect
   author: dhiyaneshDk
   severity: info
   tags: upload
-requests:
+
+http:
   - method: GET
     path:
       - '{{BaseURL}}/upload.jsp'
